@@ -817,3 +817,8 @@ ol.gradient-list{
 .serviceImage img:hover{
   opacity: 1;
 }
+
+.reference{
+  color: #292929; 
+  text-align: left;
+}
