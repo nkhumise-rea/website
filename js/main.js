@@ -79,7 +79,8 @@ $(document).ready(function() {
 
   $(function() {
     typed.typed({
-      strings: ["Rea Nkhumise.", "A PhD Researcher.","A Roboticist."],
+      // strings: ["Rea Nkhumise.", "A PhD Researcher.","A Roboticist."],
+      strings: ["Rea.", "A Scientist.","An Engineer."],
       typeSpeed: 100,
       loop: true,
     });
