@@ -7,7 +7,6 @@ $(document).ready(function() {
   //  //SMOOTH SCROLL
   // ========================================================================= //
 
-
   $(document).on("scroll", onScroll);
 
   $('a[href^="#"]').on('click', function(e) {
@@ -23,8 +22,7 @@ $(document).ready(function() {
 
     $(this).addClass('active');
 
-    var target = this.hash,
-        menu = target;
+    var target = this.hash;
 
     target = $(target);
     $('html, body').stop().animate({
@@ -36,7 +34,7 @@ $(document).ready(function() {
   });
 
 
-  function onScroll(event) {
+  function onScroll() {
     if ($('.home').length) {
       var scrollPos = $(document).scrollTop();
       $('nav ul li a').each(function() {
@@ -49,7 +47,6 @@ $(document).ready(function() {
   // ========================================================================= //
   //  //NAVBAR SHOW - HIDE
   // ========================================================================= //
-
 
   $(window).scroll(function() {
     var scroll = $(window).scrollTop();
@@ -79,8 +76,7 @@ $(document).ready(function() {
 
   $(function() {
     typed.typed({
-      // strings: ["Rea Nkhumise.", "A PhD Researcher.","A Roboticist."],
-      strings: ["Rea.", "A Scientist.","An Engineer."],
+      strings: ["Dr. Rea Nkhumise", "A Scientist", "An Engineer"],
       typeSpeed: 100,
       loop: true,
     });
@@ -90,7 +86,6 @@ $(document).ready(function() {
   // ========================================================================= //
   //  Owl Carousel Services
   // ========================================================================= //
-
 
   $('.services-carousel').owlCarousel({
       autoplay: true,
@@ -132,8 +127,6 @@ $(document).ready(function() {
     });
   };
 
-
-  // Call the functions
   magnifPopup();
 
 });
