@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="author" content="Rea Nkhumise" />
+  <meta name="description" content="Research, publications, patents, and open-source code by Rea Michael Nkhumise — Reinforcement Learning Engineer & AI Researcher." />
+  <meta name="keywords" content="rea nkhumise, reinforcement learning, TMLR, AAMAS, optimal transport, occupancy measure, task complexity, robotics, open source, patents" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Research | Rea Nkhumise</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:   #1a3c6e;
+      --ink:    #1e1e1e;
+      --mid:    #4a4a4a;
+      --soft:   #7a7a7a;
+      --cream:  #f8f7f3;
+      --white:  #ffffff;
+      --accent: #c8722a;
+      --rule:   #d6d0c4;
+      --card-bg:#f2f0ea;
+      --green:  #2a6e48;
+      --max:    860px;
+      --serif:  'DM Serif Display', Georgia, serif;
+      --sans:   'DM Sans', system-ui, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--sans); font-size: 16px; line-height: 1.7; color: var(--ink); background: var(--cream); }
+    a { color: var(--navy); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── Nav ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--white); border-bottom: 1px solid var(--rule);
+      padding: 0 2rem; display: flex; align-items: center;
+      justify-content: space-between; height: 56px;
+    }
+    .nav-logo { font-family: var(--serif); font-size: 1.1rem; color: var(--navy); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      font-size: 0.85rem; font-weight: 500; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--mid); transition: color 0.2s;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--navy); text-decoration: none; }
+
+    /* ── Page header ── */
+    .page-header {
+      max-width: var(--max); margin: 0 auto; padding: 4rem 2rem 2.5rem;
+    }
+    .section-label {
+      font-size: 0.7rem; font-weight: 600; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 0.4rem;
+    }
+    .page-header h1 {
+      font-family: var(--serif); font-size: clamp(1.9rem, 4vw, 2.8rem);
+      color: var(--navy); line-height: 1.15; margin-bottom: 0.9rem;
+    }
+    .page-header p {
+      font-size: 0.97rem; color: var(--mid); max-width: 580px; line-height: 1.65;
+    }
+
+    /* ── Section ── */
+    section {
+      max-width: var(--max); margin: 0 auto; padding: 2.5rem 2rem;
+      border-top: 1px solid var(--rule);
+    }
+    .section-title {
+      font-family: var(--serif); font-size: 1.45rem;
+      color: var(--navy); margin-bottom: 1.6rem;
+    }
+
+    /* ── Paper card ── */
+    .paper {
+      background: var(--white); border: 1px solid var(--rule);
+      border-radius: 3px; padding: 1.4rem 1.6rem;
+      margin-bottom: 1.2rem; transition: border-color 0.2s;
+    }
+    .paper:hover { border-color: var(--navy); }
+
+    .paper-venue {
+      display: inline-block; font-size: 0.7rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 0.2rem 0.6rem; border-radius: 2px; margin-bottom: 0.6rem;
+    }
+    .venue-tmlr   { background: #e8f0fb; color: var(--navy); }
+    .venue-aamas  { background: #e8f6ee; color: var(--green); }
+    .venue-asme   { background: #fdf0e4; color: var(--accent); }
+    .venue-springer { background: #f2f0ea; color: var(--mid); }
+
+    .paper h3 {
+      font-size: 1rem; font-weight: 600; color: var(--ink);
+      line-height: 1.4; margin-bottom: 0.35rem;
+    }
+    .paper .authors { font-size: 0.83rem; color: var(--soft); margin-bottom: 0.5rem; }
+    .paper .abstract { font-size: 0.86rem; color: var(--mid); line-height: 1.6; margin-bottom: 0.8rem; }
+    .paper-links { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .paper-links a {
+      font-size: 0.75rem; font-weight: 600; letter-spacing: 0.05em;
+      text-transform: uppercase; padding: 0.25rem 0.7rem;
+      border: 1px solid var(--rule); border-radius: 2px; color: var(--navy);
+      transition: background 0.15s;
+    }
+    .paper-links a:hover { background: var(--navy); color: var(--white); text-decoration: none; }
+
+    /* ── Patent card ── */
+    .patent {
+      display: grid; grid-template-columns: auto 1fr;
+      gap: 0 1.2rem; margin-bottom: 1.2rem;
+      padding-bottom: 1.2rem; border-bottom: 1px solid var(--rule);
+      align-items: start;
+    }
+    .patent:last-child { border-bottom: none; margin-bottom: 0; }
+    .patent-num {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.06em;
+      text-transform: uppercase; color: var(--accent); white-space: nowrap;
+      padding-top: 0.15rem;
+    }
+    .patent h3 { font-size: 0.92rem; font-weight: 600; color: var(--ink); margin-bottom: 0.2rem; }
+    .patent p  { font-size: 0.82rem; color: var(--soft); }
+
+    /* ── Repo card ── */
+    .repo-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+    }
+    @media (max-width: 620px) { .repo-grid { grid-template-columns: 1fr; } }
+
+    .repo {
+      background: var(--white); border: 1px solid var(--rule);
+      border-radius: 3px; padding: 1.1rem 1.3rem;
+      transition: border-color 0.2s;
+    }
+    .repo:hover { border-color: var(--navy); }
+    .repo-label {
+      font-size: 0.67rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 0.3rem;
+    }
+    .repo h3 {
+      font-size: 0.88rem; font-weight: 600; color: var(--navy);
+      margin-bottom: 0.35rem; font-family: 'Courier New', monospace;
+    }
+    .repo p { font-size: 0.82rem; color: var(--mid); line-height: 1.5; margin-bottom: 0.7rem; }
+    .repo a {
+      font-size: 0.75rem; font-weight: 600; letter-spacing: 0.05em;
+      text-transform: uppercase; color: var(--navy);
+    }
+
+    /* ── Talks table ── */
+    .talks { list-style: none; }
+    .talk-item {
+      display: grid; grid-template-columns: 80px 1fr;
+      gap: 0 1rem; padding: 0.8rem 0; border-bottom: 1px solid var(--rule);
+    }
+    .talk-item:last-child { border-bottom: none; }
+    .talk-year {
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 0.06em;
+      color: var(--accent); padding-top: 0.12rem;
+    }
+    .talk-detail strong { font-size: 0.9rem; font-weight: 600; color: var(--ink); display: block; }
+    .talk-detail span   { font-size: 0.82rem; color: var(--soft); }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center; padding: 2rem;
+      font-size: 0.78rem; color: var(--soft); border-top: 1px solid var(--rule);
+    }
+    footer a { color: var(--soft); }
+    footer a:hover { color: var(--navy); }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <a class="nav-logo" href="index.html">Rea Nkhumise</a>
+    <ul class="nav-links">
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="research.html" class="active">Research</a></li>
+      <li><a href="blog-grid.html">Blog</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-header">
+    <div class="section-label">Research</div>
+    <h1>Publications, Patents<br>&amp; Open-Source Code</h1>
+    <p>
+      My research focuses on measurement and evaluation in reinforcement learning —
+      developing principled tools for understanding how RL algorithms learn,
+      and applying RL to novel real-world engineering design problems.
+      <a href="https://scholar.google.com/citations?user=jlZ_vkEAAAAJ" target="_blank" rel="noopener">
+        Full profile on Google Scholar →
+      </a>
+    </p>
+  </div>
+
+  <!-- ── Publications ─────────────────────────────────────────── -->
+  <section id="publications">
+    <div class="section-label">Publications</div>
+    <div class="section-title">Peer-reviewed work</div>
+
+    <div class="paper">
+      <span class="paper-venue venue-aamas">AAMAS 2026</span>
+      <h3>Issues with Measuring Task Complexity via Random Policies in Robotic Tasks</h3>
+      <p class="authors">Nkhumise RM et al. — 25th International Conference on Autonomous Agents and Multiagent Systems, 2026</p>
+      <p class="abstract">
+        Challenges widely-used Policy Information Capacity (PIC) and Policy-Optimal Information
+        Capacity (POIC) metrics for measuring task complexity in robotic RL, demonstrating
+        empirically that they contradict established understanding of robotic task difficulty.
+        Full experimental code is open source.
+      </p>
+      <div class="paper-links">
+        <a href="https://github.com/nkhumise-rea/task_complexity" target="_blank" rel="noopener">Code</a>
+        <!-- Add: <a href="[DOI link]">Paper →</a> once proceedings DOI is live -->
+      </div>
+    </div>
+
+    <div class="paper">
+      <span class="paper-venue venue-tmlr">TMLR 2025</span>
+      <h3>Studying Exploration in RL: An Optimal Transport Analysis of Occupancy Measure Trajectories</h3>
+      <p class="authors">Nkhumise RM et al. — Transactions on Machine Learning Research, 2025</p>
+      <p class="abstract">
+        Represents the learning process of an RL algorithm as a sequence of policies in the
+        manifold of state-action occupancy measures, and uses optimal transport to measure the
+        length and character of the resulting trajectory. Introduces the Effort of Sequential
+        Learning (ESL) metric, which captures exploration behaviour in a way no prior metric did.
+      </p>
+      <div class="paper-links">
+        <a href="https://github.com/nkhumise-rea/analysis_of_occupancy_measure_trajectory" target="_blank" rel="noopener">Code</a>
+        <!-- Add: <a href="[TMLR link]">Paper →</a> -->
+      </div>
+    </div>
+
+    <div class="paper">
+      <span class="paper-venue venue-asme">ASME J. Mechanisms & Robotics 2017</span>
+      <h3>Controllability Ellipse to Evaluate Performance of Mobile Manipulators for Manufacturing Tasks</h3>
+      <p class="authors">Canfield SL; Nkhumise RM. — ASME Journal of Mechanisms and Robotics, 9(6), 2017</p>
+      <p class="abstract">
+        Introduces the Controllability Ellipsoid method for evaluating the performance of
+        mobile manipulators across manufacturing task configurations.
+      </p>
+      <div class="paper-links">
+        <!-- Add DOI link -->
+      </div>
+    </div>
+
+    <div class="paper">
+      <span class="paper-venue venue-springer">Springer 2014 — Edited Volume</span>
+      <h3>Artificial Intelligence Techniques for Rational Decision Making</h3>
+      <p class="authors">Nkhumise RM (Editor). — Springer, ISSN 1610-3947, 2014</p>
+      <p class="abstract">
+        Edited volume surveying AI techniques for rational decision-making across
+        engineering and autonomous systems domains.
+      </p>
+      <div class="paper-links">
+        <!-- Add Springer link -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Patents ──────────────────────────────────────────────── -->
+  <section id="patents">
+    <div class="section-label">Intellectual Property</div>
+    <div class="section-title">Patents</div>
+
+    <div class="patent">
+      <span class="patent-num">ZA 2021/07,371</span>
+      <div>
+        <h3>Automated cooking apparatus and method</h3>
+        <p>Khalo MG; Nkhumise RM; Seboyeng LP; Lefoka MP. — South African Patent</p>
+      </div>
+    </div>
+
+    <div class="patent">
+      <span class="patent-num">ZA 2019/06,503</span>
+      <div>
+        <h3>Method and system for creating and publishing an event on a platform</h3>
+        <p>Khalo MG; Nkhumise RM. — South African Patent</p>
+      </div>
+    </div>
+
+    <div class="patent">
+      <span class="patent-num">US 62/316,250</span>
+      <div>
+        <h3>Miniature fan-based refrigeration system for confined environments</h3>
+        <p>Alharbi N; Normand E; Nkhumise RM; Stephenson C. — US Provisional Patent</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Open source ──────────────────────────────────────────── -->
+  <section id="code">
+    <div class="section-label">Open Source</div>
+    <div class="section-title">Research code &amp; tools</div>
+
+    <div class="repo-grid">
+
+      <div class="repo">
+        <div class="repo-label">AAMAS 2026 — companion code</div>
+        <h3>task_complexity</h3>
+        <p>Installable Python package implementing PIC/POIC task-complexity metrics for RL.
+           Includes custom PyBullet robotic environments of escalating difficulty,
+           SAC/DDPG baselines, statistical testing, and HPC scripts.</p>
+        <a href="https://github.com/nkhumise-rea/task_complexity" target="_blank" rel="noopener">github.com/nkhumise-rea/task_complexity →</a>
+      </div>
+
+      <div class="repo">
+        <div class="repo-label">TMLR 2025 — companion code</div>
+        <h3>analysis_of_occupancy_measure_trajectory</h3>
+        <p>RL analysis framework using optimal transport to study exploration behaviour
+           across discrete (Gridworld) and continuous (MountainCar) environments.
+           Fully reproducible with Conda environment spec.</p>
+        <a href="https://github.com/nkhumise-rea/analysis_of_occupancy_measure_trajectory" target="_blank" rel="noopener">github.com/nkhumise-rea/analysis_of_omt →</a>
+      </div>
+
+    <div class="repo">
+        <div class="repo-label">Open hardware · Social impact</div>
+        <h3>lobolas.github.io — Lobola pap-cooking robot</h3>
+        <p>Complete open-source mechatronics project: Autodesk Inventor CAD assemblies,
+           circuit schematics, and Arduino C++ firmware controlling stepper, servo, and DC motors
+           for automated maize-meal feeding, stirring, lid actuation, and heat control.
+           Full hardware-software stack, openly licensed.</p>
+        <a href="https://github.com/nkhumise-rea/lobolas.github.io" target="_blank" rel="noopener">github.com/nkhumise-rea/lobolas.github.io →</a>
+      </div>
+
+      <div class="repo">
+        <div class="repo-label">Robotics simulation</div>
+        <h3>UR10-Gazebo</h3>
+        <p>ROS2 + Gazebo + RViz pick-and-place simulation of the Universal Robots UR10 arm.
+           Written in C++/CMake. Bridges academic RL work with real industrial
+           robotics hardware.</p>
+        <a href="https://github.com/nkhumise-rea/UR10-Gazebo" target="_blank" rel="noopener">github.com/nkhumise-rea/UR10-Gazebo →</a>
+      </div>
+
+      <div class="repo">
+        <div class="repo-label">RL tutorials</div>
+        <h3>Reinforcement-Learning</h3>
+        <p>PyTorch implementations of A2C, DQN, SARSA, DDPG, and SAC across CartPole,
+           GridWorld, and Pendulum. Written for accessibility — lowering the barrier
+           to entry for new RL practitioners.</p>
+        <a href="https://github.com/nkhumise-rea/Reinforcement-Learning" target="_blank" rel="noopener">github.com/nkhumise-rea/Reinforcement-Learning →</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── Talks ────────────────────────────────────────────────── -->
+  <section id="talks">
+    <div class="section-label">Talks & Outreach</div>
+    <div class="section-title">Selected presentations</div>
+
+    <ul class="talks">
+      <li class="talk-item">
+        <span class="talk-year">2026</span>
+        <div class="talk-detail">
+          <strong>Inspiring Diversity: Celebrating Black Professionals in AI &amp; ML</strong>
+          <span>Invited speaker — Loughborough University London</span>
+        </div>
+      </li>
+      <li class="talk-item">
+        <span class="talk-year">2024</span>
+        <div class="talk-detail">
+          <strong>Entrepreneurship Session Chair</strong>
+          <span>IEEE UK &amp; Ireland Robotics Conference</span>
+        </div>
+      </li>
+      <li class="talk-item">
+        <span class="talk-year">2024</span>
+        <div class="talk-detail">
+          <strong>Diversity in Doctoral Education</strong>
+          <span>Invited speaker — Yorkshire Consortium for Equity in Doctoral Education (YCEDE)</span>
+        </div>
+      </li>
+      <li class="talk-item">
+        <span class="talk-year">2023 – 2024</span>
+        <div class="talk-detail">
+          <strong>IEEE Entrepreneurship Tutorial Series</strong>
+          <span>IEEE Student Branch, University of Sheffield</span>
+        </div>
+      </li>
+      <li class="talk-item">
+        <span class="talk-year">2018</span>
+        <div class="talk-detail">
+          <strong>Open-source Robotics for Emerging Economies</strong>
+          <span>ITU Telecom World 2018, Geneva &amp; AfricaOSH Summit, Osaka</span>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <!-- ── Footer ───────────────────────────────────────────────── -->
+  <footer>
+    <p>
+      <a href="https://scholar.google.com/citations?user=jlZ_vkEAAAAJ" target="_blank" rel="noopener">Google Scholar</a>
+      &nbsp;·&nbsp;
+      <a href="https://github.com/nkhumise-rea" target="_blank" rel="noopener">GitHub</a>
+      &nbsp;·&nbsp;
+      <a href="https://linkedin.com/in/rea-nkhumise" target="_blank" rel="noopener">LinkedIn</a>
+    </p>
+    <p style="margin-top:0.5rem;">Designed by Rea</p>
+  </footer>
+
+</body>
+</html>
