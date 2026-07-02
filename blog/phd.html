@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- meta -->
+  <meta charset="UTF-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>How Do You Grade a Machine That Teaches Itself?|Rea Nkhumise|Articles</title>
+  <link rel="canonical" href="https://drnkhumise.com/blog/phd.html" />
+  <meta content="rea nkhumise, reinforcement learning, RL, machine learning, PhD, exploration, effort of sequential learning, ESL, task complexity, robustness, optimal transport, University of Sheffield, AI." name="keywords">
+  <meta content="A plain-language look at my PhD research on measuring how reinforcement-learning agents actually learn — beyond a single reward score." name="description">
+  <meta content="Rea Nkhumise" name="author">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,500,500i,600,600i,700,700i|Playfair+Display:400,400i,700,700i,900,900i" rel="stylesheet">
+
+  <!-- Bootstrap CSS File -->
+  <link href="../lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Libraries CSS Files -->
+  <link href="../lib/ionicons/css/ionicons.min.css" rel="stylesheet">
+  <link href="../lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="../lib/magnific-popup/magnific-popup.css" rel="stylesheet">
+  <link href="../lib/hover/hover.min.css" rel="stylesheet">
+
+  <!-- Blog Stylesheet File -->
+  <link href="../css/blog.css" rel="stylesheet">
+
+  <!-- Main Stylesheet File -->
+  <link href="../css/style.css" rel="stylesheet">
+
+  <!-- Responsive css -->
+  <link href="../css/responsive.css" rel="stylesheet">
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="../images/favicon2.png">
+</head>
+
+<body>
+
+  <!-- start section navbar -->
+  <nav id="main-nav-subpage" class="subpage-nav">
+    <div class="row">
+      <div class="container">
+
+        <!-- <div class="logo">
+          <a href="../index.html"><img src="../images/logo_name3.png" alt="logo"></a>
+        </div> -->
+
+        <div class="responsive"><i data-icon="m" class="ion-navicon-round"></i></div>
+
+        <ul class="nav-menu list-unstyled">
+          <li><a href="../index.html#header" class="smoothScroll">Home</a></li>
+          <li><a href="../index.html#about" class="smoothScroll">About</a></li>
+          <li><a href="../blog-grid.html" class="smoothScroll">Blog</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- End section navbar -->
+
+  <!-- start section main content -->
+  <div class="main-content paddsection">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-8 col-md-offset-2">
+          <div class="row">
+            <div class="container-main single-main">
+              <div class="col-md-12">
+
+                  <div class="journal-txt">
+                      <h3 style="color: #292929; text-align: center;">HOW DO YOU GRADE A MACHINE THAT TEACHES ITSELF?</h3><br>
+                    </div>
+
+                  <div class="block-main mb-30">
+                  <div class="content-main single-post padDiv">
+
+                    <div class="post-meta">
+                      <ul class="list-unstyled mb-0">
+                        <li class="author">by: Rea Nkhumise</li>
+                        <li class="date">date: July 2, 2026</li>
+                      </ul>
+                    </div>
+
+                    <p class="mb-30"> How do you know whether a machine has truly learned? Is a high score enough to trust it? And what does that single number quietly hide about the way it got there?</p>
+
+                    <p class="mb-30"> Imagine two students who sit the same exam and both score 90%. On paper they look identical — but one understood the material, while the other crammed all night and guessed half the answers. Same score, very different learning. That is the problem I spent my PhD confronting — not in students, but in machines.</p>
+
+                    <p class="mb-30"> My field is <i>reinforcement learning</i> (RL), where a machine learns by trial and error: it acts, receives a reward or a penalty, and slowly works out which actions pay off — much like training a dog with treats, or a child learning to ride a bike.</p>
+
+                    <p class="mb-30"> For decades we have judged these agents by one thing: the reward they eventually collect. Higher score, better algorithm. But like our two students, a single score is a shallow verdict — it reveals the destination and nothing about the journey. Two agents can reach the same reward while one learned efficiently and the other simply stumbled there by luck.</p>
+
+                    <blockquote>A reward score tells you where an algorithm ended up, but almost nothing about how it learned to get there.</blockquote>
+
+                    <p class="mb-30"> My thesis, <i>Multi-faceted Performance Metrics for Reinforcement Learning</i>, argues for a report card instead of a single grade — a handful of measurements that capture the different faces of good learning.</p>
+
+                    <p class="mb-30"> The first I call the <b>Effort of Sequential Learning</b> (ESL). Picture every attempt as a step across a vast map of possible strategies. A skilled learner walks almost straight toward a good one; a poor learner wanders and doubles back, covering far more ground for the same result. ESL measures the length of that journey — so two agents that finish in the same place are no longer indistinguishable.</p>
+
+                    <blockquote>Measure the journey, not just the destination. How much ground an agent covers to reach a good strategy reveals how well it truly explored.</blockquote>
+
+                    <p class="mb-30"> A second face is <b>task difficulty</b>. To judge an agent fairly, we should know how hard its task really is. A popular shortcut estimates this by letting an agent flail about at random — and I showed it can mislead badly, labelling hard robotic tasks as easy and easy ones as hard, distorting every comparison built on top of it.</p>
+
+                    <p class="mb-30"> The last face is <b>robustness</b>: does the agent still perform when the world shifts slightly from its training? One that aces training but crumbles at the first surprise has not learned — it has memorised.</p>
+
+                    <blockquote>In conclusion, judging a learning machine by its score alone is like judging a student by a single exam mark. Measure how it explored, how hard the task was, and how well it copes with surprise — and you finally see whether it learned, or merely scored.</blockquote>
+
+                    <p class="mb-30"> If you would like the full technical account, my complete PhD thesis is available <a href="https://etheses.whiterose.ac.uk/id/eprint/38454/1/Multifaceted%20Performance%20Metrics%20for%20RL.pdf" target="_blank" rel="noopener"><b>HERE</b></a>.</p>
+
+                    <!--<blockquote>If you are still looking for that one person who will change your life, take a look in the mirror.</blockquote>-->
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- start section main content -->
+
+  <!-- start section footer -->
+  <div id="footer" class="text-center">
+    <div class="container">
+      <div class="socials-media text-center">
+
+        <ul class="list-unstyled">
+          <li><a href="https://za.linkedin.com/in/rea-nkhumise" target="_blank"><i class="ion-social-linkedin"></i></a></li>
+          <li><a href="https://github.com/nkhumise-rea" target="_blank"><i class="ion-social-github"></i></a></li>
+        </ul>
+
+      </div>
+
+      <p class="copyright">Copyright &copy; <span class="year">2026</span> drnkhumise.com. All rights reserved.</p>
+
+      <div class="credits">
+        Designed by Rea
+      </div>
+
+    </div>
+  </div>
+  <!-- End section footer -->
+
+  <!-- JavaScript Libraries -->
+  <script src="../lib/jquery/jquery.min.js"></script>
+  <script src="../lib/jquery/jquery-migrate.min.js"></script>
+  <script src="../lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../lib/typed/typed.js"></script>
+  <script src="../lib/owlcarousel/owl.carousel.min.js"></script>
+  <script src="../lib/magnific-popup/magnific-popup.min.js"></script>
+  <script src="../lib/isotope/isotope.pkgd.min.js"></script>
+
+  <!-- Contact Form JavaScript File -->
+  <script src="../contactform/contactform.js"></script>
+
+  <!-- Template Main Javascript File -->
+  <script src="../js/main.js"></script>
+
+</body>
+
+</html>
